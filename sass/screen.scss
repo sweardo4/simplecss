@@ -3,14 +3,43 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-//@import "compass/reset";
+/*variables*/
+@import "variables";
+/*reboot*/
 @import "normalize";
+/*mixins*/
 @import "mixins";
+
+
 
 body{font:12px/1.5 "Microsoft YaHei",tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;}
 div{display: block;}
 
+.container{
+  @include make-container();
+}
 .header{@include clearfix();}
+
 .top-url{float: right;}
 
+.top-url > ul > li{
+  list-style-type: none;
+  float: left;
+}
+
+.top-url > ul >li > a{
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: $gray-dark;
+  padding:10px;
+  &:hover{
+    text-decoration: underline;
+    color: $brand-primary;
+  }
+}
+
+.content{
+  text-align: center;
+}
 

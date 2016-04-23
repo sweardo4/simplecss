@@ -1,5 +1,8 @@
 @charset "UTF-8";
 /* Welcome to Compass. In this file you should write your main styles. (or centralize your imports) Import this file using the following HTML or equivalent: <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/*variables*/
+/*变量声明区*/
+/*reboot*/
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /*! normalize.css v3.0.0 | HTML5 Display Definitions | MIT License | git.io/normalize */
 /* line 9, ../../../../../.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.5/stylesheets/normalize/_html5.scss */
@@ -129,17 +132,37 @@ table { border-collapse: collapse; border-spacing: 0; }
 /* line 14, ../../../../../.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.5/stylesheets/normalize/_tables.scss */
 td, th { padding: 0; }
 
+/*mixins*/
 /*mixin汇集区*/
-/* line 10, ../sass/screen.scss */
+/*网格*/
+/* line 15, ../sass/screen.scss */
 body { font: 12px/1.5 "Microsoft YaHei",tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif; }
 
-/* line 11, ../sass/screen.scss */
+/* line 16, ../sass/screen.scss */
 div { display: block; }
+
+/* line 18, ../sass/screen.scss */
+.container { margin-right: auto; margin-left: auto; padding-left: 0.9375rem; padding-right: 0.9375rem; }
+/* line 2, ../sass/mixins/_clearfix.scss */
+.container:before, .container:after { content: ' '; display: table; }
+/* line 7, ../sass/mixins/_clearfix.scss */
+.container:after { clear: both; }
 
 /* line 2, ../sass/mixins/_clearfix.scss */
 .header:before, .header:after { content: ' '; display: table; }
 /* line 7, ../sass/mixins/_clearfix.scss */
 .header:after { clear: both; }
 
-/* line 14, ../sass/screen.scss */
+/* line 23, ../sass/screen.scss */
 .top-url { float: right; }
+
+/* line 25, ../sass/screen.scss */
+.top-url > ul > li { list-style-type: none; float: left; }
+
+/* line 30, ../sass/screen.scss */
+.top-url > ul > li > a { text-decoration: none; font-size: 14px; font-weight: bold; color: #373a3c; padding: 10px; }
+/* line 36, ../sass/screen.scss */
+.top-url > ul > li > a:hover { text-decoration: underline; color: #0275d8; }
+
+/* line 42, ../sass/screen.scss */
+.content { text-align: center; }
