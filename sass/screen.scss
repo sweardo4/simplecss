@@ -4,8 +4,13 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 //@import "compass/reset";
-
-.box{width: 200px;height: 200px;background-color:red;}
-
 @import "normalize";
+@import "mixins";
+
+body{font:12px/1.5 "Microsoft YaHei",tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;}
+div{display: block;}
+
+.header{@include clearfix();}
+.top-url{float: right;}
+
 
