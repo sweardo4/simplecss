@@ -141,6 +141,7 @@ input, button, select, textarea { outline: none; }
 textarea { resize: none; }
 
 /*网格*/
+/*scss帮助库*/
 /* line 15, ../sass/screen.scss */
 body { font: 12px/1.5 "Microsoft YaHei",tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif; }
 
@@ -177,25 +178,25 @@ input, button, textarea, form { border: none; }
 .content { text-align: center; }
 
 /* line 48, ../sass/screen.scss */
-.baidu-img > img { width: 300px; }
+.baidu-img > img { width: 25em; }
 
-/* line 50, ../sass/screen.scss */
+/* line 52, ../sass/screen.scss */
 .search-input { padding: 10px; }
 
-/* line 55, ../sass/screen.scss */
-span.input-span { width: 500px; padding: 10px 0px; border: 1px solid #aaa; border-right: none; }
-/* line 60, ../sass/screen.scss */
-span.input-span:hover { border-color: #0275d8; border-right: none; }
-/* line 64, ../sass/screen.scss */
-span.input-span:focus { borer-color: #0275d8; border-right: none; }
+/* line 57, ../sass/screen.scss */
+span.input-span { width: 31.25em; padding: 10px 0px; border: 1px solid #aaa; }
+/* line 62, ../sass/screen.scss */
+span.input-span:hover { border: 1px solid #0275d8; border-right: none; }
+/* line 66, ../sass/screen.scss */
+span.input-span:focus { borer: 1px solid #0275d8; }
 
-/* line 67, ../sass/screen.scss */
-.search-btn { display: inline-block; font-weight: bold; border-top: none; font-size: 16px; line-height: 34px; padding: 0px 10px; background-color: #0275d8; color: #fff; }
+/* line 69, ../sass/screen.scss */
+.search-btn { display: inline-block; font-weight: bold; border-top: none; font-size: 16px; line-height: 2.0625em; padding: 0px 12px; background-color: #0275d8; color: #fff; }
 
-/* line 78, ../sass/screen.scss */
-.input-btn { padding: 11px 10px 10px 10px; border: 1px solid #0275d8; background-color: #0275d8; color: #fff; }
+/* line 80, ../sass/screen.scss */
+.input-btn { padding: 10px 10px 10px 10px; border: 1px solid #0275d8; background-color: #0275d8; color: #fff; }
 
-/* line 85, ../sass/screen.scss */
-.search-input { display: inline-block; width: 500px; border: none; }
-/* line 89, ../sass/screen.scss */
+/* line 87, ../sass/screen.scss */
+.search-input { display: inline-block; width: 31.25em; border: none; }
+/* line 91, ../sass/screen.scss */
 .search-input:focus { border: 0px; }

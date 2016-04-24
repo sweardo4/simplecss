@@ -1,0 +1,32 @@
+/*scss帮助库*/
+
+
+@function pxToem($px, $font-size-root: 16px) {
+  @if (unitless($px)) {
+    @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+    @return pxToem($px + 0px); // That may fail.
+  } @else if (unit($px) == em) {
+    @return $px;
+  }
+  @return ($px / $font-size-root) * 1em;
+}
+
+@function pxTorem($px,$font-size-root:16px){//$px为需要转换的字号
+  @if (unitless($px)) {
+    @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+    @return pxToem($px + 0px); // That may fail.
+  } @else if (unit($px) == rem) {
+    @return $px;
+  }
+  @return ($px / $font-size-root) * 1rem;
+}
+
+@mixin img-dpr($image-url){
+  background-image: url($image-url);//默认
+  [data-dpr="2"] & {
+    background-image: url($image-url);//两倍高清
+  }
+  [data-dpr="3"] & {
+    background-image: url($image-url);//三倍高清
+  }
+}

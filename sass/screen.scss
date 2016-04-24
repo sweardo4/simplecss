@@ -45,7 +45,9 @@ input,button,textarea,form{
 .content{
   text-align: center;
 }
-.baidu-img > img{width: 300px;}
+.baidu-img > img{
+  width: pxTorem(400);
+}
 
 .search-input{
   padding:10px;
@@ -53,30 +55,30 @@ input,button,textarea,form{
 
 
 span.input-span{
-  width: 500px;
+  width: pxTorem(500);
   padding:10px 0px;
   border:1px solid #aaa;
-  border-right: none;
+  //border-right: none;
   &:hover{
-    border-color:$brand-primary;
+    border:1px solid $brand-primary;
     border-right: none;
   }
-  &:focus{borer-color:$brand-primary; border-right: none;}
+  &:focus{borer:1px solid $brand-primary;}
 
 }
 .search-btn{
   display: inline-block;
   font-weight: bold;
   border-top: none;
-  font-size: 16px;
-  line-height: 34px;
-  padding:0px 10px;
+  font-size: $font-size-root;
+  line-height: pxTorem(33);
+  padding:0px 12px;
   background-color: #0275d8;
   color: #fff;
 }
 
 .input-btn{
-  padding: 11px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
   border:1px solid #0275d8;
   background-color: #0275d8;
   color: #fff;
@@ -84,7 +86,7 @@ span.input-span{
 
 .search-input {
   display: inline-block;
-  width: 500px;
+  width: pxTorem(500);
   border:none;
   &:focus{
     border:0px;}
