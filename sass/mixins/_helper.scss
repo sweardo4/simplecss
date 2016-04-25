@@ -30,3 +30,16 @@
     background-image: url($image-url);//三倍高清
   }
 }
+
+
+/*添加厂商前缀*/
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+  }
+}
