@@ -257,12 +257,21 @@ div {
 
 /* line 18, ../sass/screen.scss */
 .container {
-  -webkit-display: flex;
-  -moz-display: flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  flex-direction: column; }
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  height: auto;
+  min-height: 100%;
+  _height: 100%;
+  position: relative; }
+  /* line 2, ../sass/mixins/_clearfix.scss */
+  .container:before, .container:after {
+    content: ' ';
+    display: table; }
+  /* line 7, ../sass/mixins/_clearfix.scss */
+  .container:after {
+    clear: both; }
 
 /* line 2, ../sass/mixins/_clearfix.scss */
 .header:before, .header:after {
@@ -272,56 +281,56 @@ div {
 .header:after {
   clear: both; }
 
-/* line 29, ../sass/screen.scss */
+/* line 27, ../sass/screen.scss */
 .top-url {
   float: right; }
 
-/* line 31, ../sass/screen.scss */
+/* line 29, ../sass/screen.scss */
 .top-url > ul > li {
   list-style-type: none;
   float: left; }
 
-/* line 36, ../sass/screen.scss */
+/* line 34, ../sass/screen.scss */
 .top-url > ul > li > a {
   font-size: 14px;
   font-weight: bold;
   color: #373a3c;
   padding: 10px; }
-  /* line 42, ../sass/screen.scss */
+  /* line 40, ../sass/screen.scss */
   .top-url > ul > li > a:hover {
     text-decoration: underline;
     color: #0275d8; }
 
-/* line 48, ../sass/screen.scss */
+/* line 46, ../sass/screen.scss */
 input, button, textarea, form {
   border: none; }
 
-/* line 51, ../sass/screen.scss */
+/* line 49, ../sass/screen.scss */
 .center {
   text-align: center; }
 
-/* line 54, ../sass/screen.scss */
+/* line 52, ../sass/screen.scss */
 .baidu-img > img {
   width: 25em; }
 
-/* line 58, ../sass/screen.scss */
+/* line 56, ../sass/screen.scss */
 .search-input {
   padding: 10px; }
 
-/* line 63, ../sass/screen.scss */
+/* line 61, ../sass/screen.scss */
 span.input-span {
   width: 43.75em;
   padding: 10px 0px;
   border: 1px solid #aaa; }
-  /* line 67, ../sass/screen.scss */
+  /* line 65, ../sass/screen.scss */
   span.input-span:hover {
     border: 1px solid #0275d8;
     border-right: none; }
-  /* line 71, ../sass/screen.scss */
+  /* line 69, ../sass/screen.scss */
   span.input-span:focus {
     borer: 1px solid #0275d8; }
 
-/* line 74, ../sass/screen.scss */
+/* line 72, ../sass/screen.scss */
 .search-btn {
   display: inline-block;
   font-weight: bold;
@@ -332,18 +341,26 @@ span.input-span {
   background-color: #0275d8;
   color: #fff; }
 
-/* line 85, ../sass/screen.scss */
+/* line 83, ../sass/screen.scss */
 .input-btn {
   padding: 10px 10px 10px 10px;
   border: 1px solid #0275d8;
   background-color: #0275d8;
   color: #fff; }
 
-/* line 92, ../sass/screen.scss */
+/* line 90, ../sass/screen.scss */
 .search-input {
   display: inline-block;
   width: 43.75em;
   border: none; }
-  /* line 96, ../sass/screen.scss */
+  /* line 94, ../sass/screen.scss */
   .search-input:focus {
     border: 0px; }
+
+/* line 98, ../sass/screen.scss */
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 50px; }

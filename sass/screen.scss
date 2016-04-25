@@ -16,13 +16,11 @@ body{font:12px/1.5 "Microsoft YaHei",tahoma,arial,'Hiragino Sans GB','\5b8b\4f53
 div{display: block;}
 
 .container{
-  //@include make-container();
-  @include prefix((
-          display: flex,
-          //flex-direction: row,
-          flex-direction: column,
-          //justify-content: space-around,
-  ),webkit moz);
+  @include make-container();
+  height:auto;
+  min-height:100%;
+  _height:100%;
+  position: relative;
 }
 .header{@include clearfix();}
 
@@ -98,6 +96,9 @@ span.input-span{
 }
 
 .footer{
-  //@include make-container();
-
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 50px;
 }
