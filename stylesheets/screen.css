@@ -247,6 +247,7 @@ textarea {
 /*网格*/
 /*scss帮助库*/
 /*添加厂商前缀*/
+/*base*/
 /* line 15, ../sass/screen.scss */
 body {
   font: 12px/1.5 "Microsoft YaHei",tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif; }
@@ -261,16 +262,32 @@ div {
   margin-left: auto;
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
-  height: auto;
   min-height: 100%;
-  _height: 100%;
-  position: relative; }
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -30px; }
   /* line 2, ../sass/mixins/_clearfix.scss */
   .container:before, .container:after {
     content: ' ';
     display: table; }
   /* line 7, ../sass/mixins/_clearfix.scss */
   .container:after {
+    clear: both; }
+
+/* line 26, ../sass/screen.scss */
+.footer {
+  width: 100%;
+  min-height: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem; }
+  /* line 2, ../sass/mixins/_clearfix.scss */
+  .footer:before, .footer:after {
+    content: ' ';
+    display: table; }
+  /* line 7, ../sass/mixins/_clearfix.scss */
+  .footer:after {
     clear: both; }
 
 /* line 2, ../sass/mixins/_clearfix.scss */
@@ -281,56 +298,56 @@ div {
 .header:after {
   clear: both; }
 
-/* line 27, ../sass/screen.scss */
+/* line 35, ../sass/screen.scss */
 .top-url {
   float: right; }
 
-/* line 29, ../sass/screen.scss */
+/* line 37, ../sass/screen.scss */
 .top-url > ul > li {
   list-style-type: none;
   float: left; }
 
-/* line 34, ../sass/screen.scss */
+/* line 42, ../sass/screen.scss */
 .top-url > ul > li > a {
   font-size: 14px;
   font-weight: bold;
   color: #373a3c;
   padding: 10px; }
-  /* line 40, ../sass/screen.scss */
+  /* line 48, ../sass/screen.scss */
   .top-url > ul > li > a:hover {
     text-decoration: underline;
     color: #0275d8; }
 
-/* line 46, ../sass/screen.scss */
+/* line 54, ../sass/screen.scss */
 input, button, textarea, form {
   border: none; }
 
-/* line 49, ../sass/screen.scss */
+/* line 57, ../sass/screen.scss */
 .center {
   text-align: center; }
 
-/* line 52, ../sass/screen.scss */
+/* line 60, ../sass/screen.scss */
 .baidu-img > img {
   width: 25em; }
 
-/* line 56, ../sass/screen.scss */
+/* line 64, ../sass/screen.scss */
 .search-input {
   padding: 10px; }
 
-/* line 61, ../sass/screen.scss */
+/* line 69, ../sass/screen.scss */
 span.input-span {
   width: 43.75em;
   padding: 10px 0px;
   border: 1px solid #aaa; }
-  /* line 65, ../sass/screen.scss */
+  /* line 73, ../sass/screen.scss */
   span.input-span:hover {
     border: 1px solid #0275d8;
     border-right: none; }
-  /* line 69, ../sass/screen.scss */
+  /* line 77, ../sass/screen.scss */
   span.input-span:focus {
     borer: 1px solid #0275d8; }
 
-/* line 72, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 .search-btn {
   display: inline-block;
   font-weight: bold;
@@ -341,26 +358,18 @@ span.input-span {
   background-color: #0275d8;
   color: #fff; }
 
-/* line 83, ../sass/screen.scss */
+/* line 91, ../sass/screen.scss */
 .input-btn {
   padding: 10px 10px 10px 10px;
   border: 1px solid #0275d8;
   background-color: #0275d8;
   color: #fff; }
 
-/* line 90, ../sass/screen.scss */
+/* line 98, ../sass/screen.scss */
 .search-input {
   display: inline-block;
   width: 43.75em;
   border: none; }
-  /* line 94, ../sass/screen.scss */
+  /* line 102, ../sass/screen.scss */
   .search-input:focus {
     border: 0px; }
-
-/* line 98, ../sass/screen.scss */
-.footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  min-height: 50px; }
