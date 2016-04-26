@@ -103,3 +103,18 @@ span.input-span{
     border:0px;}
 }
 
+.tian-right,.tian-left{
+  display: inline-block;
+}
+.tian-left{
+  width: pxTorem(300);
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: fixed;
+  top:0px;
+  bottom:pxTorem(40);
+}
+.tian-right{
+  @include  clearfix();
+  margin-left: pxTorem(300);
+}
