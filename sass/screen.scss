@@ -102,7 +102,7 @@ span.input-span{
   &:focus{
     border:0px;}
 }
-
+/*天涯首页*/
 .tian-right,.tian-left{
   display: inline-block;
 }
@@ -118,3 +118,4 @@ span.input-span{
   @include  clearfix();
   margin-left: pxTorem(300);
 }
+/*--结束--*/
