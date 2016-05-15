@@ -23,6 +23,9 @@ div{display: block;}
   margin: 0 auto -30px;//和footer高度一样 保持footer始终在页面最底部
 }
 
+.container-full{
+  width: 100%;
+}
 .footer{
   width: 100%;
   min-height: 30px;
@@ -119,3 +122,42 @@ span.input-span{
   margin-left: pxTorem(300);
 }
 /*--结束--*/
+// maotop
+.top-sticky{
+  background-color: #c60a0a;
+  color:$kbd-color;
+  text-align: center;
+  font-size: 18px;
+  fieldset{
+    display: inline-block;
+    margin: 20px;
+    width: 60%;
+    position: relative;
+    border: 0;
+    padding:0;
+    .left{
+      line-height: 34px;
+      margin-right: 40px;
+    }
+
+  .left,.search,button{
+      display: inline-block;
+      float: left;
+      border: 0;
+    }
+    button{
+      height: 34px;
+      padding:0 10px;
+      background-color: $brand-success;
+    }
+    .search{
+      width: 65%;
+    }
+    .search input{
+      padding:0 5px;
+      height: 34px;
+      width: 100%;
+      color:$brand-info;
+    }
+  }
+}

@@ -275,6 +275,10 @@ div {
     clear: both; }
 
 /* line 26, ../sass/screen.scss */
+.container-full {
+  width: 100%; }
+
+/* line 29, ../sass/screen.scss */
 .footer {
   width: 100%;
   min-height: 30px;
@@ -298,56 +302,56 @@ div {
 .header:after {
   clear: both; }
 
-/* line 35, ../sass/screen.scss */
+/* line 38, ../sass/screen.scss */
 .top-url {
   float: right; }
 
-/* line 37, ../sass/screen.scss */
+/* line 40, ../sass/screen.scss */
 .top-url > ul > li {
   list-style-type: none;
   float: left; }
 
-/* line 42, ../sass/screen.scss */
+/* line 45, ../sass/screen.scss */
 .top-url > ul > li > a {
   font-size: 14px;
   font-weight: bold;
   color: #373a3c;
   padding: 10px; }
-  /* line 48, ../sass/screen.scss */
+  /* line 51, ../sass/screen.scss */
   .top-url > ul > li > a:hover {
     text-decoration: underline;
     color: #0275d8; }
 
-/* line 54, ../sass/screen.scss */
+/* line 57, ../sass/screen.scss */
 input, button, textarea, form {
   border: none; }
 
-/* line 57, ../sass/screen.scss */
+/* line 60, ../sass/screen.scss */
 .center {
   text-align: center; }
 
-/* line 60, ../sass/screen.scss */
+/* line 63, ../sass/screen.scss */
 .baidu-img > img {
   width: 25em; }
 
-/* line 64, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 .search-input {
   padding: 10px; }
 
-/* line 69, ../sass/screen.scss */
+/* line 72, ../sass/screen.scss */
 span.input-span {
   width: 43.75em;
   padding: 10px 0px;
   border: 1px solid #aaa; }
-  /* line 73, ../sass/screen.scss */
+  /* line 76, ../sass/screen.scss */
   span.input-span:hover {
     border: 1px solid #0275d8;
     border-right: none; }
-  /* line 77, ../sass/screen.scss */
+  /* line 80, ../sass/screen.scss */
   span.input-span:focus {
     borer: 1px solid #0275d8; }
 
-/* line 80, ../sass/screen.scss */
+/* line 83, ../sass/screen.scss */
 .search-btn {
   display: inline-block;
   font-weight: bold;
@@ -358,27 +362,28 @@ span.input-span {
   background-color: #0275d8;
   color: #fff; }
 
-/* line 91, ../sass/screen.scss */
+/* line 94, ../sass/screen.scss */
 .input-btn {
   padding: 10px 10px 10px 10px;
   border: 1px solid #0275d8;
   background-color: #0275d8;
   color: #fff; }
 
-/* line 98, ../sass/screen.scss */
+/* line 101, ../sass/screen.scss */
 .search-input {
   display: inline-block;
   width: 43.75em;
   border: none; }
-  /* line 102, ../sass/screen.scss */
+  /* line 105, ../sass/screen.scss */
   .search-input:focus {
     border: 0px; }
 
-/* line 106, ../sass/screen.scss */
+/*天涯首页*/
+/* line 109, ../sass/screen.scss */
 .tian-right, .tian-left {
   display: inline-block; }
 
-/* line 109, ../sass/screen.scss */
+/* line 112, ../sass/screen.scss */
 .tian-left {
   width: 18.75em;
   overflow-y: auto;
@@ -387,7 +392,7 @@ span.input-span {
   top: 0px;
   bottom: 2.5em; }
 
-/* line 117, ../sass/screen.scss */
+/* line 120, ../sass/screen.scss */
 .tian-right {
   margin-left: 18.75em; }
   /* line 2, ../sass/mixins/_clearfix.scss */
@@ -397,3 +402,42 @@ span.input-span {
   /* line 7, ../sass/mixins/_clearfix.scss */
   .tian-right:after {
     clear: both; }
+
+/*--结束--*/
+/* line 126, ../sass/screen.scss */
+.top-sticky {
+  background-color: #c60a0a;
+  color: #fff;
+  text-align: center;
+  font-size: 18px; }
+  /* line 131, ../sass/screen.scss */
+  .top-sticky fieldset {
+    display: inline-block;
+    margin: 20px;
+    width: 60%;
+    position: relative;
+    border: 0;
+    padding: 0; }
+    /* line 138, ../sass/screen.scss */
+    .top-sticky fieldset .left {
+      line-height: 34px;
+      margin-right: 40px; }
+    /* line 143, ../sass/screen.scss */
+    .top-sticky fieldset .left, .top-sticky fieldset .search, .top-sticky fieldset button {
+      display: inline-block;
+      float: left;
+      border: 0; }
+    /* line 148, ../sass/screen.scss */
+    .top-sticky fieldset button {
+      height: 34px;
+      padding: 0 10px;
+      background-color: #5cb85c; }
+    /* line 153, ../sass/screen.scss */
+    .top-sticky fieldset .search {
+      width: 65%; }
+    /* line 156, ../sass/screen.scss */
+    .top-sticky fieldset .search input {
+      padding: 0 5px;
+      height: 34px;
+      width: 100%;
+      color: #5bc0de; }
