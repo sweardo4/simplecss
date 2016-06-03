@@ -1,0 +1,27 @@
+.list{
+	position: relative;
+	ul li{
+		width: pxTorem(400);
+		background-color: red;
+		position: relative;
+		border-bottom: 1px solid #fff;
+		border-right: 1px solid #fff;
+		height: pxTorem(40);
+	}
+	ul li a{
+		display: inline-block;
+		// width: pxTorem(384);
+		padding-left: pxTorem(20);
+		color:#fff;
+		line-height: pxTorem(30);
+	}
+	i{
+		position: absolute;
+		right: pxTorem(10);
+	}
+	.list-sun{
+			position: absolute;
+			top:0;
+			left: pxTorem(400);
+	}
+}

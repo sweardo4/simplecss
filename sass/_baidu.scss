@@ -1,0 +1,66 @@
+
+
+.top-url{float: right;}
+
+.top-url > ul > li{
+  list-style-type: none;
+  float: left;
+}
+
+.top-url > ul >li > a{
+  //text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: $gray-dark;
+  padding:10px;
+  &:hover{
+    text-decoration: underline;
+    color: $brand-primary;
+  }
+}
+
+.baidu-img > img{
+  width: pxTorem(400);
+}
+
+.search-input{
+  padding:10px;
+}
+
+
+span.input-span{
+  width: pxTorem(700);
+  padding:10px 0px;
+  border:1px solid #aaa;
+  &:hover{
+    border:1px solid $brand-primary;
+    border-right: none;
+  }
+  &:focus{borer:1px solid $brand-primary;}
+
+}
+.search-btn{
+  display: inline-block;
+  font-weight: bold;
+  border-top: none;
+  font-size: $font-size-root;
+  line-height: pxTorem(33);
+  padding:0px 12px;
+  background-color: #0275d8;
+  color: #fff;
+}
+
+.input-btn{
+  padding: 10px 10px 10px 10px;
+  border:1px solid #0275d8;
+  background-color: #0275d8;
+  color: #fff;
+}
+
+.search-input {
+  display: inline-block;
+  width: pxTorem(700);
+  border:none;
+  &:focus{
+    border:0px;}
+}

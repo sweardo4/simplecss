@@ -1,2 +1,46 @@
 input,button,select,textarea{ outline:none;}
 textarea{resize:none;}
+
+/*base*/
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body{font:12px/1.5 "Microsoft YaHei",tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;}
+div{display: block;}
+
+.container{
+  @include make-container();
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -30px;//和footer高度一样 保持footer始终在页面最底部
+}
+
+.footer{
+  width: 100%;
+  min-height: 30px;
+  @include make-container()
+}
+
+
+.header{@include clearfix();}
+
+input,button,textarea,form{
+  border:none;
+}
+.center{
+  text-align: center;
+}
+
+ul li{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+}
+.hide{
+  display: none;
+}
