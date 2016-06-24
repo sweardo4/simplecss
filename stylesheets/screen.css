@@ -418,6 +418,47 @@ span.input-span {
     clear: both; }
 
 /*--结束--*/
+/* line 2, ../sass/_picture.scss */
+.picture, .add-btn {
+  position: relative;
+  display: inline-block;
+  background: #D0EEFF;
+  border: 1px solid #99D3F5;
+  border-radius: 0.25em;
+  padding: 0.25em 1.875em;
+  overflow: hidden;
+  color: #1E88C7;
+  text-decoration: none;
+  text-indent: 0;
+  line-height: 5vh; }
+
+/* line 15, ../sass/_picture.scss */
+.picture {
+  margin-top: 50vh;
+  margin-left: 40vw; }
+
+/* line 19, ../sass/_picture.scss */
+.picture input {
+  position: absolute;
+  /*font-size: 100px;*/
+  padding: 0.25em 1.875em;
+  line-height: 5vh;
+  right: 0;
+  top: 0;
+  opacity: 0; }
+
+/* line 28, ../sass/_picture.scss */
+.picture:hover {
+  background: #AADFFD;
+  border-color: #78C3F3;
+  color: #004974;
+  text-decoration: none; }
+
+/* line 34, ../sass/_picture.scss */
+.add-btn {
+  margin-top: 2vh;
+  margin-left: 80vw; }
+
 /* line 1, ../sass/_list.scss */
 .list {
   position: relative; }
