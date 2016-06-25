@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="092cbbc8-05bb-4c1e-ac78-23e69d96c32d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascripts/picture.js" afterPath="$PROJECT_DIR$/javascripts/picture.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/picture.html" afterPath="$PROJECT_DIR$/picture.html" />
     </list>
     <ignored path="simplecss.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -205,12 +203,12 @@
       <workItem from="1461565519864" duration="1401000" />
       <workItem from="1466740176818" duration="3405000" />
       <workItem from="1466821221075" duration="1371000" />
-      <workItem from="1466855676857" duration="7000" />
+      <workItem from="1466855676857" duration="606000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14174000" />
+    <option name="totallyTimeSpent" value="14773000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />

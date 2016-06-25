@@ -101,17 +101,20 @@
     var initScale = 1;
     new AlloyFinger(el, {
       multipointStart: function() {
+        console.log('multipointStart');
         To.stopAll();
         initScale = el.scaleX;
       },
       rotate: function(evt) {
+        console.log('rotate')
         el.rotateZ += evt.angle;
-
       },
       pinch: function(evt) {
+        alert('pinch')
         el.scaleX = el.scaleY = initScale * evt.scale;
       },
       multipointEnd: function() {
+        console.log('multipointEnd')
         To.stopAll();
         if (el.scaleX < 1) {
 
@@ -141,15 +144,16 @@
         }
       },
       pressMove: function(evt) {
+        alert('pressMove');
         el.translateX += evt.deltaX;
         el.translateY += evt.deltaY;
       },
       tap: function(evt) {
         console.log(el.scaleX + "_" + el.scaleY + "_" + el.rotateZ + "_" + el.translateX + "_" + el.translateY);
-				console.log(evt)
-        console.log("tap");
+        alert("tap");
       },
       doubleTap: function(evt) {
+        alert('doubleTap')
         To.stopAll();
         if (el.scaleX > 1.5) {
           new To(el, "scaleX", 1, 500, ease);
@@ -169,10 +173,11 @@
         //console.log("doubleTap");
       },
       longTap: function(evt) {
-        console.log("longTap");
+        alert("longTap");
+
       },
       swipe: function(evt) {
-        console.log("swipe" + evt.direction);
+        aler("swipe" + evt.direction);
       }
     });
   }
