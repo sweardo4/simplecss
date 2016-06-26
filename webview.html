@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>Webview Example</title>
+	<script type="text/javascript">
+var nw=null;
+// H5 plus事件处理
+function plusReady(){
+	createWebview();
+}
+if(window.plus){
+	plusReady();
+}else{
+	document.addEventListener("plusready",plusReady,false);
+}
+
+// 创建Webview窗口监听侧滑返回事件
+function createWebview(){
+	// 打开新窗口
+	nw=plus.webview.create( "http://m.csdn.net/","",{top:"100px",bottom:"0px",popGesture:"hide"} );
+	nw.addEventListener( "popGesture", function(e){
+		poplog.innerText="popGesture: "+e.type+","+e.result+","+e.progress;
+	}, false );
+}
+// 显示Webview窗口
+function showWebview(){
+	nw.show( "slide-in-right" );
+}
+// 隐藏Webview窗口
+function hideWebview(){
+	nw.hide();
+}
+// 关闭窗口
+function closeWebview(){
+	nw.close();
+	plus.webview.currentWebview().close();
+}
+	</script>
+	</head>
+	<body>
+		Webview窗口侧滑返回事件
+		<button onclick="closeWebview()">Close</button>
+		<button onclick="showWebview()">Show</button>
+		<button onclick="hideWebview()">Hide</button>
+		<div id="poplog"></div>
+	</body>
+</html>

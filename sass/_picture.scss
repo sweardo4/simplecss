@@ -1,29 +1,33 @@
 
-.picture,.add-btn{
+.picture{
 	position: relative;
-	display: inline-block;
+	// display: inline-block;
 	background: #D0EEFF;
-	border: 1px solid #99D3F5;
+	border: 2px dashed #99D3F5;
 	border-radius: pxTorem(4);
-	padding: pxTorem(4) pxTorem(30);
 	overflow: hidden;
 	color: #1E88C7;
 	text-decoration: none;
 	text-indent: 0;
 	line-height: 5vh;
-}
-.picture {
-		margin-top: 50vh;
-		margin-left: 40vw;
+	margin: 0 auto;
+	width: 80%;
+	margin-top: 20%;
+	height: 80vh;
 }
 .picture input {
     position: absolute;
-    /*font-size: 100px;*/
-		padding: pxTorem(4) pxTorem(30);
-		line-height: 5vh;
-    right: 0;
-    top: 0;
+		height: 80vh;
+		top:0px;
+		width: 100%;
     opacity: 0;
+}
+.picture span{
+	margin: 0 auto;
+	display: block;
+	font-size: 22px;
+	text-align: center;
+	margin-top: 40vh;
 }
 .picture:hover {
     background: #AADFFD;
@@ -31,7 +35,21 @@
     color: #004974;
     text-decoration: none;
 }
-.add-btn{
-	margin-top: 2vh;
-	margin-left: 80vw;
+
+.img-group{
+	margin: 0 auto;
+	width: 80%;
+	height: 80vh;
+	margin-top: 20%;
+	padding: pxTorem(30);
+	border: 2px dashed #99D3F5;
+	overflow: hidden;
+	display: none;
+}
+
+.img-group li {
+	margin-top: pxTorem(20);
+}
+.img-group li img{
+	margin: 0 auto;
 }

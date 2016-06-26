@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="092cbbc8-05bb-4c1e-ac78-23e69d96c32d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascripts/picture.js" afterPath="$PROJECT_DIR$/javascripts/picture.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/_picture.scss" afterPath="$PROJECT_DIR$/sass/_picture.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stylesheets/screen.css" afterPath="$PROJECT_DIR$/stylesheets/screen.css" />
     </list>
     <ignored path="simplecss.iws" />
     <ignored path=".idea/workspace.xml" />

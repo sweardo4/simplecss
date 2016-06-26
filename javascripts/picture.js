@@ -17,35 +17,42 @@
 
   function html5Reader(file) {
     var fileObj = file.files,
-      ulObj = document.createElement('ul'),
-      liObj = document.createElement('li');
+      ulObj = document.createElement('ul');
+
     if (fileObj) {
       for (var i = 0; i < fileObj.length; i++) {
-        var imgObj = document.createElement('img');
+        var imgObj = document.createElement('img'),
+            liObj = document.createElement('li');
         $(imgObj).attr('src', getObjectURL(fileObj[i]));
         $(imgObj).appendTo($(liObj))
+        $(liObj).appendTo($(ulObj));
       }
-      $(imgObj).appendTo($(liObj));
-      $(liObj).appendTo($(ulObj));
       $(ulObj).appendTo($('.img-group'));
     }
-    $('img').velocity({
-      width: '100%'
-    }, 200);
+    var ObjChange = {
+      'width':function(){
+        return '200px'
+      },
+    }
     $('.picture').velocity({
-      marginTop: '2vh',
-      marginLeft: '80vw'
+      'margin-left': '100vw',
     }, {
       "easing": "ease-in-out",
       "duration": 200
     });
+
+    // 添加隐藏
+    setTimeout(function(){
+      $('.picture').css('display','none')
+      $('.img-group').show(function(){
+      })
+      $('img').velocity(ObjChange, 200);
+    },1000)
     return fileObj;
   }
 
-
   function imageLoaded(selector, onload) {
     for (var i = 0; i < selector.length; i++) {
-
       (function() {
         var img = new Image();
         var dom = selector[i];
@@ -56,17 +63,13 @@
           img = null;
         };
         img.src = $(dom).attr("src");
-
       })(i)
-
     }
-
   }
 
   function ease(x) {
     return Math.sqrt(1 - Math.pow(x - 1, 2));
   }
-
 
   $('#picture').on('change', function(e) {
     var ua = navigator.userAgent.toLowerCase(),
@@ -78,11 +81,8 @@
       alert("不支持" + ext + '文件');
       return;
     }
-
     html5Reader($this[0]);
-
     var topPx;
-
     imageLoaded($("img"), function(w, h) {
       $(this).css('display', 'block');
       topPx = window.innerHeight / 2 - (h * window.innerWidth / w) / 2;
@@ -93,7 +93,6 @@
 
     });
   })
-
 
   // 手势定义
 
@@ -110,7 +109,7 @@
         el.rotateZ += evt.angle;
       },
       pinch: function(evt) {
-        alert('pinch')
+        console.log('pinch')
         el.scaleX = el.scaleY = initScale * evt.scale;
       },
       multipointEnd: function() {
@@ -144,16 +143,14 @@
         }
       },
       pressMove: function(evt) {
-        alert('pressMove');
         el.translateX += evt.deltaX;
+        console.log(evt.deltax);
         el.translateY += evt.deltaY;
       },
       tap: function(evt) {
         console.log(el.scaleX + "_" + el.scaleY + "_" + el.rotateZ + "_" + el.translateX + "_" + el.translateY);
-        alert("tap");
       },
       doubleTap: function(evt) {
-        alert('doubleTap')
         To.stopAll();
         if (el.scaleX > 1.5) {
           new To(el, "scaleX", 1, 500, ease);
@@ -173,11 +170,11 @@
         //console.log("doubleTap");
       },
       longTap: function(evt) {
-        alert("longTap");
+        console.log("longTap");
 
       },
       swipe: function(evt) {
-        aler("swipe" + evt.direction);
+        console.log("swipe" + evt.direction);
       }
     });
   }
