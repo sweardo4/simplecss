@@ -83,6 +83,32 @@
     }
     html5Reader($this[0]);
     var topPx;
+
+    new AlloyFinger(document,{
+      swipe: function(evt) {
+        console.log(evt.path)
+        if(evt.direction == 'Left'){
+          for (var i = 0; i < (evt.path).length; i++) {
+            var imgGroup = (((evt.path)[i].className) == 'img-group')
+            if(!imgGroup){
+              $('.picture').css({
+                'margin-left':'10vw',
+                'display':'block'
+              })
+              // $('.picture').velocity({
+              //   'marginLeft':'0',
+              //   'display':'block'
+              // }, {
+              //   "easing": "ease-in-out",
+              //   "duration": 200
+              // });
+              $('.img-group').hide();
+
+            }
+          }
+        }
+      }
+    })
     imageLoaded($("img"), function(w, h) {
       $(this).css('display', 'block');
       topPx = window.innerHeight / 2 - (h * window.innerWidth / w) / 2;
@@ -95,6 +121,7 @@
   })
 
   // 手势定义
+
 
   function touchAddHandle(el, topPx) {
     var initScale = 1;
