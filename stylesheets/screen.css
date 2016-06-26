@@ -461,18 +461,17 @@ span.input-span {
 .img-group {
   margin: 0 auto;
   width: 80%;
-  height: 80vh;
   margin-top: 20%;
   padding: 1.875em;
   border: 2px dashed #99D3F5;
   overflow: hidden;
   display: none; }
 
-/* line 50, ../sass/_picture.scss */
+/* line 49, ../sass/_picture.scss */
 .img-group li {
   margin-top: 1.25em; }
 
-/* line 53, ../sass/_picture.scss */
+/* line 52, ../sass/_picture.scss */
 .img-group li img {
   margin: 0 auto; }
 
