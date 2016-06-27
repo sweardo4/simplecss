@@ -83,11 +83,13 @@
 
         new AlloyFinger(document, {
             swipe: function(evt) {
-                alert(evt.direction);
-                console.log(evt.path);
+                // alert(evt.direction);
+                // console.log(evt.path);
                 if (evt.direction == 'Left') {
                     for (var i = 0; i < (evt.path).length; i++) {
+
                         var imgGroup = (((evt.path)[i].className) == 'img-group')
+                        alert(imgGroup)
                         if (!imgGroup) {
                             $('.picture').css({
                                 'margin-left': '10vw',
