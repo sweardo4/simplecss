@@ -86,7 +86,8 @@
 
     new AlloyFinger(document,{
       swipe: function(evt) {
-        console.log(evt.path)
+        alert(evt.path);
+        console.log(evt.path);
         if(evt.direction == 'Left'){
           for (var i = 0; i < (evt.path).length; i++) {
             var imgGroup = (((evt.path)[i].className) == 'img-group')
