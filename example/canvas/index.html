@@ -1,115 +1,129 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
-    <title>Canvas+AlloyFinger</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <style>
-        .ribbon {
-            top: 3.2em;
-            right: -4.7em;
-            -webkit-transform: rotate(45deg);
-            -moz-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            -o-transform: rotate(45deg);
-            transform: rotate(45deg);
-            color:#fff;
-            display: block;
-            padding: .6em 3.5em;
-            position: fixed;
-            text-align: center;
-            text-decoration: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            background-color: green;
-            z-index: 10000;
-        }
-    </style>
+    <title>Canvas</title>
+    <meta charset="UTF-8">
+    <!-- HTML5页面窗口自动调整到设备宽度，并禁止用户缩放页面 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
+    <!-- 忽略将页面中的数字识别为电话号码 -->
+    <meta content="telephone=no" name="format-detection">
+    <!-- 忽略Android平台中对邮箱地址的识别 -->
+    <meta name="format-detection" content="email=no" />
+    <!-- 当网站添加到主屏幕快速启动方式，可隐藏地址栏，仅针对ios的safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- ios7.0版本以后，safari上已看不到效果 -->
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
 </head>
+
 <body>
-<a href="https://github.com/AlloyTeam/AlloyFinger" class="ribbon">Fork me on Github</a>
-<script src="../../asset/alloy_paper.js"></script>
-<script src="../../alloy_finger.js"></script>
-<div style="text-align: center;"><canvas id="ourCanvas" width="300" height="600" style="border: 1px solid black;"></canvas></div>
+    <script src="../../lib/alloy_paper.js"></script>
+    <script src="../../lib/alloy_finger.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/3.0.0/jquery.min.js" charset="utf-8"></script>
+    <div style="text-align: center;">
+        <canvas id="ourCanvas" width="300" height="600" style="border: 1px solid black;"></canvas>
+    </div>
 
-<script>
+    <div><input type="submit" value='Download' id='download'></div>
 
-    ;(function (AlloyPaper) {
-        var Stage = AlloyPaper.Stage, Bitmap = AlloyPaper.Bitmap,Loader=AlloyPaper.Loader;
+    <script>
+        ;
+        (function(AlloyPaper,$) {
 
-        var stage = new Stage("#ourCanvas");
-        stage.autoUpdate=false;
-        var ld = new Loader();
-        ld.loadRes([
-            { id: "test", src: "../../asset/test.png" },
-            { id: "test2", src: "../../asset/test2.png" }
-        ]);
-        ld.complete(function () {
-            var bmp = new Bitmap(ld.get("test"));
-            bmp.originX = 0.5;
-            bmp.originY = 0.5;
-            bmp.x = stage.width / 2;
-            bmp.y =150;
-            stage.add(bmp);
 
-            var bmp2 = new Bitmap(ld.get("test2"));
-            bmp2.originX = 0.5;
-            bmp2.originY = 0.5;
-            bmp2.x = stage.width / 2;
-            bmp2.y =450;
-            stage.add(bmp2);
 
-            stage.update();
 
-            var initScale = 1;
-            new AlloyFinger(bmp, {
-                multipointStart: function () {
-                    initScale = bmp.scaleX;
-                },
-                rotate: function (evt) {
-                    bmp.rotation += evt.angle;
-                    stage.update();
-                },
-                pinch: function (evt) {
-                    bmp.scaleX = bmp.scaleY = initScale * evt.scale;
-                    stage.update();
-                },
-                pressMove: function (evt) {
-                    bmp.x += evt.deltaX;
-                    bmp.y += evt.deltaY;
-                    stage.update();
-                }
+            var Stage = AlloyPaper.Stage,
+                Bitmap = AlloyPaper.Bitmap,
+                Loader = AlloyPaper.Loader;
 
+            var stage = new Stage("#ourCanvas");
+            stage.autoUpdate = false;
+            var ld = new Loader();
+            ld.loadRes([{
+                id: "test",
+                src: "../../lib/test.png"
+            }, {
+                id: "test2",
+                src: "../../lib/test2.png"
+            }]);
+            ld.complete(function() {
+                var bmp = new Bitmap(ld.get("test"));
+                bmp.originX = 0.5;
+                bmp.originY = 0.5;
+                bmp.x = stage.width / 2;
+                bmp.y = 150;
+                stage.add(bmp);
+
+                var bmp2 = new Bitmap(ld.get("test2"));
+                bmp2.originX = 0.5;
+                bmp2.originY = 0.5;
+                bmp2.x = stage.width / 2;
+                bmp2.y = 450;
+                stage.add(bmp2);
+
+                stage.update();
+
+                var initScale = 1;
+                new AlloyFinger(bmp, {
+                    multipointStart: function() {
+                        initScale = bmp.scaleX;
+                    },
+                    rotate: function(evt) {
+                        bmp.rotation += evt.angle;
+                        stage.update();
+                    },
+                    pinch: function(evt) {
+                        bmp.scaleX = bmp.scaleY = initScale * evt.scale;
+                        stage.update();
+                    },
+                    pressMove: function(evt) {
+                        bmp.x += evt.deltaX;
+                        bmp.y += evt.deltaY;
+                        stage.update();
+                    }
+                });
+                new AlloyFinger(bmp2, {
+                    multipointStart: function() {
+                        initScale = bmp2.scaleX;
+                    },
+                    rotate: function(evt) {
+                        bmp2.rotation += evt.angle;
+                        stage.update();
+                    },
+                    pinch: function(evt) {
+                        bmp2.scaleX = bmp2.scaleY = initScale * evt.scale;
+                        stage.update();
+                    },
+                    pressMove: function(evt) {
+                        bmp2.x += evt.deltaX;
+                        bmp2.y += evt.deltaY;
+                        stage.update();
+                    }
+
+                });
             });
+            function saveAsLocalImage(el) {
+                var image = new Image();
+                var myCanvas = document.getElementById(el);
 
-            new AlloyFinger(bmp2, {
-                multipointStart: function () {
-                    initScale = bmp2.scaleX;
-                },
-                rotate: function (evt) {
-                    bmp2.rotation += evt.angle;
-                    stage.update();
-                },
-                pinch: function (evt) {
-                    bmp2.scaleX = bmp2.scaleY = initScale * evt.scale;
-                    stage.update();
-                },
-                pressMove: function (evt) {
-                    bmp2.x += evt.deltaX;
-                    bmp2.y += evt.deltaY;
-                    stage.update();
-                }
+                console.log($(myCanvas))
+                image.src = myCanvas.toDataURL('image/png');
+                window.location.href = image; // it will save locally
+            }
 
-            });
-        });
+            $('#download').on('click',function(){
+                saveAsLocalImage('ourCanvas');
+            })
 
-
-    })(AlloyPaper)
-
-
-
-</script>
+        })(AlloyPaper,jQuery)
+    </script>
 </body>
+
 </html>

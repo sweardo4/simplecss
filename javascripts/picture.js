@@ -1,5 +1,4 @@
 ! function($) {
-
   'use strict';
   // 兼容性处理
   function getObjectURL(file) {
@@ -18,11 +17,10 @@
   function html5Reader(file) {
     var fileObj = file.files,
       ulObj = document.createElement('ul');
-
     if (fileObj) {
       for (var i = 0; i < fileObj.length; i++) {
         var imgObj = document.createElement('img'),
-            liObj = document.createElement('li');
+          liObj = document.createElement('li');
         $(imgObj).attr('src', getObjectURL(fileObj[i]));
         $(imgObj).appendTo($(liObj))
         $(liObj).appendTo($(ulObj));
@@ -30,7 +28,7 @@
       $(ulObj).appendTo($('.img-group'));
     }
     var ObjChange = {
-      'width':function(){
+      'width': function() {
         return '200px'
       },
     }
@@ -40,18 +38,15 @@
       "easing": "ease-in-out",
       "duration": 200
     });
-
     // 添加隐藏
-    setTimeout(function(){
-      $('.picture').css('display','none')
-      $('.img-group').show(function(){
-      })
+    setTimeout(function() {
+      $('.picture').css('display', 'none')
+      $('.img-group').show(function() {})
       $('img').velocity(ObjChange, 200);
-    },1000)
+    }, 1000)
     return fileObj;
   }
 
-  // 图片预加载
   function imageLoaded(selector, onload) {
     for (var i = 0; i < selector.length; i++) {
       (function() {
@@ -85,26 +80,21 @@
     html5Reader($this[0]);
     var topPx;
 
-    new AlloyFinger(document,{
+    new AlloyFinger(document, {
       swipe: function(evt) {
-        console.log(evt.path)
-        if(evt.direction == 'Left'){
+        // alert(evt.direction);
+        // console.log(evt.path);
+        if (evt.direction == 'Left') {
           for (var i = 0; i < (evt.path).length; i++) {
-            var imgGroup = (((evt.path)[i].className) == 'img-group')
-            if(!imgGroup){
-              $('.picture').css({
-                'margin-left':'10vw',
-                'display':'block'
-              })
-              // $('.picture').velocity({
-              //   'marginLeft':'0',
-              //   'display':'block'
-              // }, {
-              //   "easing": "ease-in-out",
-              //   "duration": 200
-              // });
-              $('.img-group').hide();
 
+            var imgGroup = (((evt.path)[i].className) == 'img-group')
+            alert(imgGroup)
+            if (!imgGroup) {
+              $('.picture').css({
+                'margin-left': '10vw',
+                'display': 'block'
+              })
+              $('.img-group').hide();
             }
           }
         }
