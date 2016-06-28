@@ -30,8 +30,8 @@
 </head>
 <body>
 <a href="https://github.com/AlloyTeam/AlloyFinger" class="ribbon">Fork me on Github</a>
-<script src="../../asset/alloy_paper.js"></script>
-<script src="../../alloy_finger.js"></script>
+<script src="../../lib/alloy_paper.js"></script>
+<script src="../../lib/alloy_finger.js"></script>
 <div style="text-align: center;"><canvas id="ourCanvas" width="300" height="600" style="border: 1px solid black;"></canvas></div>
 
 <script>
@@ -43,8 +43,8 @@
         stage.autoUpdate=false;
         var ld = new Loader();
         ld.loadRes([
-            { id: "test", src: "../../asset/test.png" },
-            { id: "test2", src: "../../asset/test2.png" }
+            { id: "test", src: "../../lib/test.png" },
+            { id: "test2", src: "../../lib/test2.png" }
         ]);
         ld.complete(function () {
             var bmp = new Bitmap(ld.get("test"));
