@@ -51,6 +51,7 @@
     return fileObj;
   }
 
+  // 图片预加载
   function imageLoaded(selector, onload) {
     for (var i = 0; i < selector.length; i++) {
       (function() {
