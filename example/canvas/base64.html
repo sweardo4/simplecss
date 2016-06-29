@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JS 图片转Base64</title>
+    <script src="http://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+        function run(input_file,get_data){
+            if ( typeof(FileReader) === 'undefined' ){
+                alert("抱歉，你的浏览器不支持 FileReader，不能将图片转换为Base64，请使用现代浏览器操作！");
+            } else {
+                try{
+                    /*图片转Base64 核心代码*/
+                    var file = input_file.files[0];
+										console.log(file)
+                    //这里我们判断下类型如果不是图片就返回 去掉就可以上传任意文件
+                    if(!/image\/\w+/.test(file.type)){
+                        alert("请确保文件为图像类型");
+                        return false;
+                    }
+                    var reader = new FileReader();
+                    reader.onload = function(){
+                        console.log(this.result);
+                    }
+                		reader.readAsDataURL(file);
+
+                }catch (e){
+                    alert('图片转Base64出错啦！'+ e.toString())
+                }
+            }
+        }
+        $(function () {
+           $("input").change(function () {
+               run(this, function (data) {
+                   $('img').attr('src',data);
+                   $('textarea').val(data);
+               });
+           });
+        });
+    </script>
+</head>
+<body>
+    <input type="file">
+    <hr>
+    <img style="max-height: 300px; height: 8em; min-width:8em;">
+    <hr>
+    <textarea  style="display: block; width: 100%;height: 30em;"></textarea>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<head>
+	<script>
+		window.onload = function() {
+			draw();
+			var saveButton = document.getElementById("saveImageBtn");
+			bindButtonEvent(saveButton, "click", saveImageInfo);
+			var dlButton = document.getElementById("downloadImageBtn");
+			bindButtonEvent(dlButton, "click", saveAsLocalImage);
+		};
+
+
+		function draw() {
+			var canvas = document.getElementById("thecanvas");
+			var ctx = canvas.getContext("2d");
+			var img = new Image();  //创建图片对象，或者 pic = document.createElement('img')
+			img.src = "http://b.hiphotos.baidu.com/image/h%3D200/sign=66193e72bf99a90124355c362d950a58/359b033b5bb5c9ea6ce7e185d239b6003af3b344.jpg";
+			img.onload = patternFill;
+
+			function patternFill() {     //定义绘图函数
+				var redTexture = ctx.createPattern(img, "repeat");
+				ctx.strokeStyle = redTexture;
+				ctx.moveTo(80,10);
+				ctx.lineTo(10,90);
+				ctx.lineWidth = 30;
+				ctx.stroke();
+			}
+		}
+
+		function bindButtonEvent(element, type, handler) {
+			if (element.addEventListener) {
+				element.addEventListener(type, handler, false);
+			} else {
+				element.attachEvent('on' + type, handler);
+			}
+		}
+
+		function saveImageInfo() {
+			var mycanvas = document.getElementById("thecanvas");
+			var image = mycanvas.toDataURL("image/png");
+			var w = window.open('about:blank', 'image from canvas');
+			w.document.write("<img src='" + image + "' alt='from canvas'/>");
+		}
+
+		function saveAsLocalImage() {
+			var myCanvas = document.getElementById("thecanvas");
+			var image = myCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+			window.location.href = image; // it will save locally
+		}
+	</script>
+</head>
+
+<body bgcolor="#E6E6FA">
+	<div>
+		<canvas width=200 height=200 id="thecanvas"></canvas>
+		<button id="saveImageBtn">Save Image</button>
+		<button id="downloadImageBtn">Download Image</button>
+	</div>
+</body>
+
+</html>
