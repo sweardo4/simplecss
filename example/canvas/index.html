@@ -33,7 +33,9 @@
     <div><input type="submit" value='Download' id='download'></div>
 
     <script>
-        ;(function(AlloyPaper,$) {
+        ;
+        (function(AlloyPaper,$) {
+
             var Stage = AlloyPaper.Stage,
                 Bitmap = AlloyPaper.Bitmap,
                 Loader = AlloyPaper.Loader;
@@ -46,7 +48,7 @@
                 src: "../../lib/test.png"
             }, {
                 id: "test2",
-                src: "../../lib/test2.png"
+                src: "../../lib/test.png"
             }]);
             ld.complete(function() {
                 var bmp = new Bitmap(ld.get("test"));
@@ -103,21 +105,21 @@
                     }
 
                 });
-              });
-              function saveAsLocalImage(el) {
-                var canvas = document.getElementById(el);
-                canvas.width = image.width;
-                canvas.height = image.height;
-                canvas.getContext("2d").drawImage(image, 0, 0);
 
-                console.log(canvas);
-              }
+            });
+
+            function convertCanvasToImage(canvas) {
+              var image = new Image();
+              image.setAttribute('crossOrigin', 'anonymous');
+              image.src = canvas.toDataURL('image/png');
+              return image;
+            }
 
             $('#download').on('click',function(){
-                saveAsLocalImage('ourCanvas');
+                convertCanvasToImage($('#ourCanvas')[0]);
             })
-
         })(AlloyPaper,jQuery)
+
     </script>
 </body>
 

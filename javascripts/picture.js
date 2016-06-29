@@ -14,6 +14,23 @@
     return url;
   }
 
+  function renderBase64(file){
+    var len = files.length;
+    var filerender = typeof(FileReader);
+    if (len  =  1 && !(filerender === 'undefined')) {
+        var file = $(files)[0]
+        if (!/image\/\w+/.test(file.type)) {
+          alert("请确保文件为图像类型");
+          return false;
+        }
+        var reader = new FileReader();
+        reader.readAsDataURL(file)
+        reader.onload = function() {
+          return reader.result;
+        }
+    }
+  }
+
   function html5Reader(file) {
     var fileObj = file.files,
       ulObj = document.createElement('ul');
@@ -21,6 +38,7 @@
       for (var i = 0; i < fileObj.length; i++) {
         var imgObj = document.createElement('img'),
           liObj = document.createElement('li');
+        // $(imgObj).attr('src', getObjectURL(fileObj[i]));
         $(imgObj).attr('src', getObjectURL(fileObj[i]));
         $(imgObj).appendTo($(liObj))
         $(liObj).appendTo($(ulObj));
@@ -52,8 +70,11 @@
       (function() {
         var img = new Image();
         var dom = selector[i];
+        console.log(dom)
+
         img.onload = function() {
           //real_width,real_height
+
           onload.call(dom, this.width, this.height);
           img.onload = null;
           img = null;
@@ -71,6 +92,7 @@
     var ua = navigator.userAgent.toLowerCase(),
       img = document.getElementById("img"),
       $this = $(this);
+
     var ext = $this[0].value.substring($this[0].value.lastIndexOf(".") + 1).toLowerCase();
     // gif在IE浏览器暂时无法显示
     if (ext != 'png' && ext != 'jpg' && ext != 'jpeg' && ext != '') {
