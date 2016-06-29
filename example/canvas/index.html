@@ -33,12 +33,7 @@
     <div><input type="submit" value='Download' id='download'></div>
 
     <script>
-        ;
-        (function(AlloyPaper,$) {
-
-
-
-
+        ;(function(AlloyPaper,$) {
             var Stage = AlloyPaper.Stage,
                 Bitmap = AlloyPaper.Bitmap,
                 Loader = AlloyPaper.Loader;
@@ -108,15 +103,15 @@
                     }
 
                 });
-            });
-            function saveAsLocalImage(el) {
-                var image = new Image();
-                var myCanvas = document.getElementById(el);
+              });
+              function saveAsLocalImage(el) {
+                var canvas = document.getElementById(el);
+                canvas.width = image.width;
+                canvas.height = image.height;
+                canvas.getContext("2d").drawImage(image, 0, 0);
 
-                console.log($(myCanvas))
-                image.src = myCanvas.toDataURL('image/png');
-                window.location.href = image; // it will save locally
-            }
+                console.log(canvas);
+              }
 
             $('#download').on('click',function(){
                 saveAsLocalImage('ourCanvas');
