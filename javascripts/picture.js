@@ -7,14 +7,12 @@
         if (window.createObjectURL != undefined) { // basic
             url = window.createObjectURL(file);
         } else if (window.URL != undefined) { // mozilla(firefox)
-            // console.log(file)
             url = window.URL.createObjectURL(file);
         } else if (window.webkitURL != undefined) { // webkit or chrome
             url = window.webkitURL.createObjectURL(file);
         }
         return url;
     }
-
     function html5Reader(file) {
         var fileObj = file.files,
             ulObj = document.createElement('ul');
@@ -39,7 +37,6 @@
             "easing": "ease-in-out",
             "duration": 200
         });
-        // 添加隐藏
         setTimeout(function() {
             $('.picture').css('display', 'none')
             $('.img-group').show(function() {})
@@ -83,13 +80,9 @@
 
         new AlloyFinger(document, {
             swipe: function(evt) {
-                // alert(evt.direction);
-                // console.log(evt.path);
                 if (evt.direction == 'Left') {
                     for (var i = 0; i < (evt.path).length; i++) {
-
                         var imgGroup = (((evt.path)[i].className) == 'img-group')
-                        alert(imgGroup)
                         if (!imgGroup) {
                             $('.picture').css({
                                 'margin-left': '10vw',
@@ -105,7 +98,6 @@
             $(this).css('display', 'block');
             topPx = window.innerHeight / 2 - (h * window.innerWidth / w) / 2;
             $(this).css('top', topPx + "px");
-
             Transform($(this)[0]);
             touchAddHandle($(this)[0], topPx);
 
@@ -114,25 +106,20 @@
 
     // 手势定义
 
-
     function touchAddHandle(el, topPx) {
         var initScale = 1;
         new AlloyFinger(el, {
             multipointStart: function() {
-                console.log('multipointStart');
                 To.stopAll();
                 initScale = el.scaleX;
             },
             rotate: function(evt) {
-                console.log('rotate')
                 el.rotateZ += evt.angle;
             },
             pinch: function(evt) {
-                console.log('pinch')
                 el.scaleX = el.scaleY = initScale * evt.scale;
             },
             multipointEnd: function() {
-                console.log('multipointEnd')
                 To.stopAll();
                 if (el.scaleX < 1) {
 
@@ -161,14 +148,15 @@
                     new To(el, "rotateZ", 270, 500, ease);
                 }
             },
+
             pressMove: function(evt) {
                 el.translateX += evt.deltaX;
-                console.log(evt.deltax);
                 el.translateY += evt.deltaY;
             },
+
             tap: function(evt) {
-                console.log(el.scaleX + "_" + el.scaleY + "_" + el.rotateZ + "_" + el.translateX + "_" + el.translateY);
             },
+
             doubleTap: function(evt) {
                 To.stopAll();
                 if (el.scaleX > 1.5) {
@@ -186,15 +174,14 @@
                     new To(el, "translateX", x, 500, ease);
                     new To(el, "translateY", y, 500, ease);
                 }
-                //console.log("doubleTap");
             },
-            longTap: function(evt) {
-                console.log("longTap");
 
+            longTap: function(evt) {
             },
+
             swipe: function(evt) {
-                console.log("swipe" + evt.direction);
             }
+
         });
     }
 
