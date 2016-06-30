@@ -18,7 +18,7 @@
 .picture input {
     position: absolute;
 		height: 80vh;
-		top:0px
+		top:0px;
 		width: 100%;
     opacity: 0;
 }
@@ -36,19 +36,42 @@
     text-decoration: none;
 }
 
+// .img-group{
+// 	margin: 0 auto;
+// 	width: 80%;
+// 	margin-top: 20%;
+// 	padding: pxTorem(30);
+// 	border: 2px dashed #99D3F5;
+// 	overflow: hidden;
+// 	display: none;
+// }
+//
+// .img-group li {
+// 	margin-top: pxTorem(20);
+// }
+// .img-group li img{
+// 	margin: 0 auto;
+// }
+
 .img-group{
 	margin: 0 auto;
-	width: 80%;
-	margin-top: 20%;
-	padding: pxTorem(30);
-	border: 2px dashed #99D3F5;
+	width: 100%;
+	height: 100vh;
+	border: 2px dashed #ff0;
 	overflow: hidden;
 	display: none;
 }
 
 .img-group li {
+	position: relative;
 	margin-top: pxTorem(20);
+	width: 40%;
+	border: 1px dashed red;
+	padding:pxTorem(10);
+	display: inline-block;
 }
 .img-group li img{
 	margin: 0 auto;
+	width: 100%;
+	// position: absolute;
 }
