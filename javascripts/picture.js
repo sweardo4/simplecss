@@ -1,108 +1,119 @@
 ! function($) {
-
-    'use strict';
-    // 兼容性处理
-    function getObjectURL(file) {
-        var url = null;
-        if (window.createObjectURL != undefined) { // basic
-            url = window.createObjectURL(file);
-        } else if (window.URL != undefined) { // mozilla(firefox)
-            url = window.URL.createObjectURL(file);
-        } else if (window.webkitURL != undefined) { // webkit or chrome
-            url = window.webkitURL.createObjectURL(file);
-        }
-        return url;
+  // 兼容性处理
+  function getObjectURL(file) {
+    var url = null;
+    if (window.createObjectURL != undefined) { // basic
+      url = window.createObjectURL(file);
+    } else if (window.URL != undefined) { // mozilla(firefox)
+      // console.log(file)
+      url = window.URL.createObjectURL(file);
+    } else if (window.webkitURL != undefined) { // webkit or chrome
+      url = window.webkitURL.createObjectURL(file);
     }
-    function html5Reader(file) {
-        var fileObj = file.files,
-            ulObj = document.createElement('ul');
-        if (fileObj) {
-            for (var i = 0; i < fileObj.length; i++) {
-                var imgObj = document.createElement('img'),
-                    liObj = document.createElement('li');
-                $(imgObj).attr('src', getObjectURL(fileObj[i]));
-                $(imgObj).appendTo($(liObj))
-                $(liObj).appendTo($(ulObj));
+    return url;
+  }
+
+  function html5Reader(file) {
+    var fileObj = file.files,
+      ulObj = document.createElement('ul');
+    if (fileObj) {
+      for (var i = 0; i < fileObj.length; i++) {
+        var imgObj = document.createElement('img'),
+          liObj = document.createElement('li');
+        // $(imgObj).attr('src', getObjectURL(fileObj[i]));
+        $(imgObj).attr('src', getObjectURL(fileObj[i]));
+        $(imgObj).appendTo($(liObj))
+        $(liObj).appendTo($(ulObj));
+      }
+      $(ulObj).appendTo($('.img-group'));
+    }
+    var ObjChange = {
+      'width': function() {
+        return '200px'
+      },
+    }
+    $('.picture').velocity({
+      'margin-left': '100vw',
+    }, {
+      "easing": "ease-in-out",
+      "duration": 200
+    });
+    // 添加隐藏
+    setTimeout(function() {
+      $('.picture').css('display', 'none')
+      $('.img-group').show(function() {})
+      $('img').velocity(ObjChange, 200);
+    }, 1000)
+    return fileObj;
+  }
+
+  function imageLoaded(selector, onload) {
+    for (var i = 0; i < selector.length; i++) {
+      (function() {
+        var img = new Image();
+        var dom = selector[i];
+        console.log(dom)
+
+        img.onload = function() {
+          //real_width,real_height
+
+          onload.call(dom, this.width, this.height);
+          img.onload = null;
+          img = null;
+        };
+        img.src = $(dom).attr("src");
+      })(i)
+    }
+  }
+
+  function ease(x) {
+    return Math.sqrt(1 - Math.pow(x - 1, 2));
+  }
+
+  $('#picture').on('change', function(e) {
+    var ua = navigator.userAgent.toLowerCase(),
+      img = document.getElementById("img"),
+      $this = $(this);
+
+    var ext = $this[0].value.substring($this[0].value.lastIndexOf(".") + 1).toLowerCase();
+    // gif在IE浏览器暂时无法显示
+    if (ext != 'png' && ext != 'jpg' && ext != 'jpeg' && ext != '') {
+      alert("不支持" + ext + '文件');
+      return;
+    }
+    html5Reader($this[0]);
+    var topPx;
+
+    new AlloyFinger(document, {
+      swipe: function(evt) {
+        // alert(evt.direction);
+        // console.log(evt.path);
+        if (evt.direction == 'Left') {
+          for (var i = 0; i < (evt.path).length; i++) {
+
+            var imgGroup = (((evt.path)[i].className) == 'img-group')
+            alert(imgGroup)
+            if (!imgGroup) {
+              $('.picture').css({
+                'margin-left': '10vw',
+                'display': 'block'
+              })
+              $('.img-group').hide();
             }
-            $(ulObj).appendTo($('.img-group'));
+          }
         }
-        var ObjChange = {
-            'width': function() {
-                return '200px'
-            },
-        }
-        $('.picture').velocity({
-            'margin-left': '100vw',
-        }, {
-            "easing": "ease-in-out",
-            "duration": 200
-        });
-        setTimeout(function() {
-            $('.picture').css('display', 'none')
-            $('.img-group').show(function() {})
-            $('img').velocity(ObjChange, 200);
-        }, 1000)
-        return fileObj;
-    }
-
-    function imageLoaded(selector, onload) {
-        for (var i = 0; i < selector.length; i++) {
-            (function() {
-                var img = new Image();
-                var dom = selector[i];
-                img.onload = function() {
-                    //real_width,real_height
-                    onload.call(dom, this.width, this.height);
-                    img.onload = null;
-                    img = null;
-                };
-                img.src = $(dom).attr("src");
-            })(i)
-        }
-    }
-
-    function ease(x) {
-        return Math.sqrt(1 - Math.pow(x - 1, 2));
-    }
-
-    $('#picture').on('change', function(e) {
-        var ua = navigator.userAgent.toLowerCase(),
-            img = document.getElementById("img"),
-            $this = $(this);
-        var ext = $this[0].value.substring($this[0].value.lastIndexOf(".") + 1).toLowerCase();
-        // gif在IE浏览器暂时无法显示
-        if (ext != 'png' && ext != 'jpg' && ext != 'jpeg' && ext != '') {
-            alert("不支持" + ext + '文件');
-            return;
-        }
-        html5Reader($this[0]);
-        var topPx;
-
-        new AlloyFinger(document, {
-            swipe: function(evt) {
-                if (evt.direction == 'Left') {
-                    for (var i = 0; i < (evt.path).length; i++) {
-                        var imgGroup = (((evt.path)[i].className) == 'img-group')
-                        if (!imgGroup) {
-                            $('.picture').css({
-                                'margin-left': '10vw',
-                                'display': 'block'
-                            })
-                            $('.img-group').hide();
-                        }
-                    }
-                }
-            }
-        })
-        imageLoaded($("img"), function(w, h) {
-            $(this).css('display', 'block');
-            topPx = window.innerHeight / 2 - (h * window.innerWidth / w) / 2;
-            $(this).css('top', topPx + "px");
-            Transform($(this)[0]);
-            touchAddHandle($(this)[0], topPx);
-
-        });
+      }
     })
+    imageLoaded($("img"), function(w, h) {
+      $(this).css('display', 'block');
+      topPx = window.innerHeight / 2 - (h * window.innerWidth / w) / 2;
+      $(this).css('top', topPx + "px");
+
+      Transform($(this)[0]);
+      touchAddHandle($(this)[0], topPx);
+
+    });
+  })
 
     // 手势定义
 
@@ -184,6 +195,5 @@
 
         });
     }
-
 
 }(jQuery)

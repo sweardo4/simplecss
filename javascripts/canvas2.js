@@ -52,6 +52,7 @@
     reader.readAsDataURL(file)
     reader.onload = function() {
       callback(thatfiles,reader.result);
+
     }
   }
 
