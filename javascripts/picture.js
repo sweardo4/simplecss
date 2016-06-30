@@ -5,7 +5,6 @@
     if (window.createObjectURL != undefined) { // basic
       url = window.createObjectURL(file);
     } else if (window.URL != undefined) { // mozilla(firefox)
-      // console.log(file)
       url = window.URL.createObjectURL(file);
     } else if (window.webkitURL != undefined) { // webkit or chrome
       url = window.webkitURL.createObjectURL(file);
@@ -52,7 +51,6 @@
       (function() {
         var img = new Image();
         var dom = selector[i];
-        console.log(dom)
 
         img.onload = function() {
           //real_width,real_height
@@ -86,13 +84,10 @@
 
     new AlloyFinger(document, {
       swipe: function(evt) {
-        // alert(evt.direction);
-        // console.log(evt.path);
         if (evt.direction == 'Left') {
           for (var i = 0; i < (evt.path).length; i++) {
 
             var imgGroup = (((evt.path)[i].className) == 'img-group')
-            alert(imgGroup)
             if (!imgGroup) {
               $('.picture').css({
                 'margin-left': '10vw',
