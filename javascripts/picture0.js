@@ -40,32 +40,39 @@
     var winWith = window.document.body.offsetWidth,
         winHeight = window.document.body.offsetHeight,
         withArr = [],
-        heightArr = [];
+        heightArr = [],
+        iconfHeight = 400; //预设图片高度所在位置
+
 
     setTimeout(function() {
       $('.picture').css('display', 'none')
       $('.img-group').find('li').each(function(){
+        var temp = ($(this).css('width').slice(0,-1)/100) * winWith
+
+        //不让图片重叠
         if(withArr){
-          var liWith = Math.random()*(winWith-$(this).css('width')*winWith);
+          console.log(temp);
+          var liWith = Math.random()*(winWith-temp);
           for (var i = 0; i < withArr.length; i++) {
+            console.log(liWith)
             while (withArr[i] == liWith ) {
-                 liWith = Math.random()*(winWith-$(this).css('width')*winWith);
+                liWith = Math.random()*(winWith-temp);
             }
           }
         }else{
           var liWith = Math.random()*(winWith-$(this).css('width')*winWith);
         }
-
         if(heightArr){
-          var liHeight = Math.random()*(550);
+          var liHeight = Math.random()*iconfHeight;
           for (var i = 0; i < heightArr.length; i++) {
             while (heightArr[i] == liHeight ) {
-                  liHeight = Math.random()*(550);
+                  liHeight = Math.random()*iconfHeight;
             }
           }
         }else{
-          var liWith = Math.random()*(winWith-$(this).css('width')*winWith);
+          var liHeight = Math.random()*iconfHeight;
         }
+        //end
         withArr.push(liWith);
         heightArr.push(liHeight);
         $(this).offset({
@@ -74,7 +81,6 @@
         });
       })
       $('.img-group').show(function() {})
-      // $('img').velocity(ObjChange, 200);
     }, 1000)
     return fileObj;
   }
@@ -114,30 +120,30 @@
     html5Reader($this[0]);
     var topPx;
 
-    new AlloyFinger(document, {
-      swipe: function(evt) {
-        if (evt.direction == 'Left') {
-          for (var i = 0; i < (evt.path).length; i++) {
-
-            var imgGroup = (((evt.path)[i].className) == 'img-group')
-            if (!imgGroup) {
-              $('.picture').css({
-                'margin-left': '10vw',
-                'display': 'block'
-              })
-              $('.img-group').hide();
-            }
-          }
-        }
-      }
-    })
+    //左滑出现
+    // new AlloyFinger(document, {
+    //   swipe: function(evt) {
+    //     if (evt.direction == 'Left') {
+    //       for (var i = 0; i < (evt.path).length; i++) {
+    //
+    //         var imgGroup = (((evt.path)[i].className) == 'img-group')
+    //         if (!imgGroup) {
+    //           $('.picture').css({
+    //             'margin-left': '10vw',
+    //             'display': 'block'
+    //           })
+    //           $('.img-group').hide();
+    //         }
+    //       }
+    //     }
+    //   }
+    // })
     imageLoaded($("img"), function(w, h) {
       $(this).css('display', 'block');
       topPx = window.innerHeight / 2 - (h * window.innerWidth / w) / 2;
       $(this).css('top', topPx + "px");
-
-      // Transform($(this)[0]);
-      // touchAddHandle($(this)[0], topPx);
+      Transform($(this)[0]);
+      touchAddHandle($(this)[0], topPx);
 
     });
   })
