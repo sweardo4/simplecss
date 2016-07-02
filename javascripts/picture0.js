@@ -197,12 +197,20 @@
                 el.translateX += evt.deltaX;
                 el.translateY += evt.deltaY;
             },
+            doubleTap: function(evt){
+
+            },
 
             tap: function(evt) {
             },
             longTap: function(evt) {
-              alert('ancd')
-              alert(evt)
+              $(el).closest('li').css('padding','0')
+              $(el).velocity({
+                'padding': '0',
+              }, {
+                "easing": "ease-in-out",
+                "duration": 200
+              });
             },
 
             swipe: function(evt) {
