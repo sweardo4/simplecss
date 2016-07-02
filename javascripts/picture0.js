@@ -200,7 +200,6 @@
 
             tap: function(evt) {
             },
-
             // doubleTap: function(evt) {
             //     To.stopAll();
             //     if (el.scaleX > 1.5) {
