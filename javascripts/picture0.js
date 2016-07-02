@@ -1,8 +1,14 @@
-! function($,window) {
+! function($, window) {
+
+  //禁用拖动时屏幕晃动
+  function delDrivemove() {
+    document.body.addEventListener('touchmove', function(event) {
+      event.preventDefault();
+    }, false);
+  }
+
   // 兼容性处理
-  document.body.addEventListener('touchmove', function (event) {
-    event.preventDefault();
-  }, false);
+
   function getObjectURL(file) {
     var url = null;
     if (window.createObjectURL != undefined) { // basic
@@ -41,46 +47,46 @@
     });
     // 添加隐藏
     var winWith = window.document.body.offsetWidth,
-        winHeight = window.document.body.offsetHeight,
-        withArr = [],
-        heightArr = [],
-        iconfHeight = 400; //预设图片高度所在位置
+      winHeight = window.document.body.offsetHeight,
+      withArr = [],
+      heightArr = [],
+      iconfHeight = 400; //预设图片高度所在位置
 
 
     setTimeout(function() {
       $('.picture').css('display', 'none')
-      $('.img-group').find('li').each(function(){
-        var temp = ($(this).css('width').slice(0,-1)/100) * winWith
+      $('.img-group').find('li').each(function() {
+        var temp = ($(this).css('width').slice(0, -1) / 100) * winWith
 
         //不让图片重叠
-        if(withArr){
-          var liWith = Math.random()*(winWith-temp);
+        if (withArr) {
+          var liWith = Math.random() * (winWith - temp);
           for (var i = 0; i < withArr.length; i++) {
             console.log(liWith)
-            while (withArr[i] == liWith ) {
-                liWith = Math.random()*(winWith-temp);
+            while (withArr[i] == liWith) {
+              liWith = Math.random() * (winWith - temp);
             }
           }
-        }else{
-          var liWith = Math.random()*(winWith-$(this).css('width')*winWith);
+        } else {
+          var liWith = Math.random() * (winWith - $(this).css('width') * winWith);
         }
-        if(heightArr){
-          var liHeight = Math.random()*iconfHeight;
+        if (heightArr) {
+          var liHeight = Math.random() * iconfHeight;
           for (var i = 0; i < heightArr.length; i++) {
-            while (heightArr[i] == liHeight ) {
-                  liHeight = Math.random()*iconfHeight;
+            while (heightArr[i] == liHeight) {
+              liHeight = Math.random() * iconfHeight;
             }
           }
-        }else{
-          var liHeight = Math.random()*iconfHeight;
+        } else {
+          var liHeight = Math.random() * iconfHeight;
         }
         //end
         withArr.push(liWith);
         heightArr.push(liHeight);
         console.log(withArr)
         $(this).offset({
-          left:liWith,
-          top:liHeight
+          left: liWith,
+          top: liHeight
         });
       })
       $('.img-group').show(function() {})
@@ -109,6 +115,7 @@
     return Math.sqrt(1 - Math.pow(x - 1, 2));
   }
 
+  delDrivemove();
   $('#picture').on('change', function(e) {
     var ua = navigator.userAgent.toLowerCase(),
       img = document.getElementById("img"),
@@ -122,25 +129,6 @@
     }
     html5Reader($this[0]);
     var topPx;
-
-    //左滑出现
-    // new AlloyFinger(document, {
-    //   swipe: function(evt) {
-    //     if (evt.direction == 'Left') {
-    //       for (var i = 0; i < (evt.path).length; i++) {
-    //
-    //         var imgGroup = (((evt.path)[i].className) == 'img-group')
-    //         if (!imgGroup) {
-    //           $('.picture').css({
-    //             'margin-left': '10vw',
-    //             'display': 'block'
-    //           })
-    //           $('.img-group').hide();
-    //         }
-    //       }
-    //     }
-    //   }
-    // })
     imageLoaded($("img"), function(w, h) {
       $(this).css('display', 'block');
       topPx = window.innerHeight / 2 - (h * window.innerWidth / w) / 2;
@@ -151,77 +139,76 @@
     });
   })
 
-    // 手势定义
+  // 手势定义
 
-    function touchAddHandle(el, topPx) {
-        var initScale = 1;
-        new AlloyFinger(el, {
-            multipointStart: function() {
-                To.stopAll();
-                initScale = el.scaleX;
-            },
-            rotate: function(evt) {
-                el.rotateZ += evt.angle;
-            },
-            pinch: function(evt) {
-                el.scaleX = el.scaleY = initScale * evt.scale;
-            },
-            multipointEnd: function() {
+  function touchAddHandle(el, topPx) {
+    var initScale = 1;
+    new AlloyFinger(el, {
+      multipointStart: function() {
+        To.stopAll();
+        initScale = el.scaleX;
+      },
+      rotate: function(evt) {
+        el.rotateZ += evt.angle;
+      },
+      pinch: function(evt) {
+        el.scaleX = el.scaleY = initScale * evt.scale;
+      },
+      multipointEnd: function() {
+        To.stopAll();
+        if (el.scaleX < 1) {
+          new To(el, "scaleX", 1, 500, ease);
+          new To(el, "scaleY", 1, 500, ease);
+        }
+        if (el.scaleX > 2) {
 
-                To.stopAll();
-                if (el.scaleX < 1) {
-                    new To(el, "scaleX", 1, 500, ease);
-                    new To(el, "scaleY", 1, 500, ease);
-                }
-                if (el.scaleX > 2) {
+          new To(el, "scaleX", 2, 500, ease);
+          new To(el, "scaleY", 2, 500, ease);
+        }
+        var rotation = el.rotateZ % 360;
 
-                    new To(el, "scaleX", 2, 500, ease);
-                    new To(el, "scaleY", 2, 500, ease);
-                }
-                var rotation = el.rotateZ % 360;
+        if (rotation < 0) rotation = 360 + rotation;
+        el.rotateZ = rotation;
 
-                if (rotation < 0) rotation = 360 + rotation;
-                el.rotateZ = rotation;
+        if (rotation > 0 && rotation < 45) {
+          new To(el, "rotateZ", 0, 500, ease);
+        } else if (rotation >= 315) {
+          new To(el, "rotateZ", 360, 500, ease);
+        } else if (rotation >= 45 && rotation < 135) {
+          new To(el, "rotateZ", 90, 500, ease);
+        } else if (rotation >= 135 && rotation < 225) {
+          new To(el, "rotateZ", 180, 500, ease);
+        } else if (rotation >= 225 && rotation < 315) {
+          new To(el, "rotateZ", 270, 500, ease);
+        }
+      },
 
-                if (rotation > 0 && rotation < 45) {
-                    new To(el, "rotateZ", 0, 500, ease);
-                } else if (rotation >= 315) {
-                    new To(el, "rotateZ", 360, 500, ease);
-                } else if (rotation >= 45 && rotation < 135) {
-                    new To(el, "rotateZ", 90, 500, ease);
-                } else if (rotation >= 135 && rotation < 225) {
-                    new To(el, "rotateZ", 180, 500, ease);
-                } else if (rotation >= 225 && rotation < 315) {
-                    new To(el, "rotateZ", 270, 500, ease);
-                }
-            },
-
-            pressMove: function(evt) {
-                el.translateX += evt.deltaX;
-                el.translateY += evt.deltaY;
-            },
-            doubleTap: function(evt){
-              $(el).closest('li').velocity(  { padding:0}, {
-                "easing": "ease-in-out",
-                "duration": 200
-              });
-            },
-
-            tap: function(evt) {
-            },
-            longTap: function(evt) {
-              $(el).velocity({
-                'padding': '0',
-              }, {
-                "easing": "ease-in-out",
-                "duration": 200
-              });
-            },
-            swipe: function(evt) {
-            }
-
+      pressMove: function(evt) {
+        el.translateX += evt.deltaX;
+        el.translateY += evt.deltaY;
+      },
+      doubleTap: function(evt) {
+        $(el).closest('li').velocity({
+          padding: 0
+        }, {
+          "easing": "ease-in-out",
+          "duration": 200
         });
+      },
 
-    }
+      tap: function(evt) {},
+      longTap: function(evt) {
+        $(el).velocity({
+          'padding': '0',
+        }, {
+          "easing": "ease-in-out",
+          "duration": 200
+        });
+      },
+      swipe: function(evt) {}
 
-}(jQuery,window)
+    });
+
+  }
+
+}(jQuery, window)
