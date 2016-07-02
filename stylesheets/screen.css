@@ -468,7 +468,7 @@ span.input-span {
 
 /* line 65, ../sass/_picture.scss */
 .img-group li {
-  position: relative;
+  position: absolute;
   margin-top: 1.25em;
   width: 40%;
   border: 1px dashed red;

@@ -51,7 +51,6 @@
 
         //不让图片重叠
         if(withArr){
-          console.log(temp);
           var liWith = Math.random()*(winWith-temp);
           for (var i = 0; i < withArr.length; i++) {
             console.log(liWith)
@@ -75,6 +74,7 @@
         //end
         withArr.push(liWith);
         heightArr.push(liHeight);
+        console.log(withArr)
         $(this).offset({
           left:liWith,
           top:liHeight
