@@ -164,9 +164,9 @@
                 el.scaleX = el.scaleY = initScale * evt.scale;
             },
             multipointEnd: function() {
+
                 To.stopAll();
                 if (el.scaleX < 1) {
-
                     new To(el, "scaleX", 1, 500, ease);
                     new To(el, "scaleY", 1, 500, ease);
                 }
@@ -198,13 +198,15 @@
                 el.translateY += evt.deltaY;
             },
             doubleTap: function(evt){
-
+              $(el).closest('li').velocity(  { padding:0}, {
+                "easing": "ease-in-out",
+                "duration": 200
+              });
             },
 
             tap: function(evt) {
             },
             longTap: function(evt) {
-              $(el).closest('li').css('padding','0')
               $(el).velocity({
                 'padding': '0',
               }, {
@@ -212,11 +214,11 @@
                 "duration": 200
               });
             },
-
             swipe: function(evt) {
             }
 
         });
+
     }
 
 }(jQuery,window)
