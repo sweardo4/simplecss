@@ -1,5 +1,8 @@
 ! function($,window) {
   // 兼容性处理
+  document.body.addEventListener('touchmove', function (event) {
+    event.preventDefault();
+  }, false);
   function getObjectURL(file) {
     var url = null;
     if (window.createObjectURL != undefined) { // basic
