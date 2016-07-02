@@ -200,26 +200,9 @@
 
             tap: function(evt) {
             },
-            // doubleTap: function(evt) {
-            //     To.stopAll();
-            //     if (el.scaleX > 1.5) {
-            //         new To(el, "scaleX", 1, 500, ease);
-            //         new To(el, "scaleY", 1, 500, ease);
-            //         new To(el, "translateX", 0, 500, ease);
-            //         new To(el, "translateY", 0, 500, ease);
-            //     } else {
-            //         var box = el.getBoundingClientRect();
-            //         var y = box.height - ((evt.changedTouches[0].pageY - topPx) * 2) - (box.height / 2 - (evt.changedTouches[0].pageY - topPx));
-            //
-            //         var x = box.width - ((evt.changedTouches[0].pageX) * 2) - (box.width / 2 - (evt.changedTouches[0].pageX));
-            //         new To(el, "scaleX", 2, 500, ease);
-            //         new To(el, "scaleY", 2, 500, ease);
-            //         new To(el, "translateX", x, 500, ease);
-            //         new To(el, "translateY", y, 500, ease);
-            //     }
-            // },
-
             longTap: function(evt) {
+              alert('ancd')
+              alert(evt)
             },
 
             swipe: function(evt) {
