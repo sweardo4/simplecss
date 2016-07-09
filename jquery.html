@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jquery源码分析</title>
+
+</head>
+<body>
+
+<div id='title' class='parent' for>
+  <h1 class="title">标题</h1>
+  <ul>
+    <li class="sun">111111</li>
+    <li class="sun">111111</li>
+    <li class="sun">111111</li>
+    <li class="sun">111111</li>
+    <li class="sun">111111</li>
+    <li class="sun">111111</li>
+  </ul>
+  <button type="button" name="button">121</button>
+  <button type="button" name="button">12</button>
+  <button type="button" name="button">121</button>
+  <button type="button" name="button">121</button>
+  <input type="button" value='click'>
+</div>
+
+<script src="./lib/jquery-2.2.4.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+  !function($){
+    console.log($('#title .sun').get(3).textContent)
+    console.log($('input:button'))
+  }(jQuery)
+</script>
+</body>
+</html>

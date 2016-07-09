@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
 </head>
+
 <body>
 
-<h3 class="title">秒杀倒计时</h3>
-<div class='time'>时间:2016年10月1日 20:00:00</div>
-<div><span class='cleartime-left'>距离开始仅剩:</span><span id='cleartime'></span></div>
-<script>
-  window.onload = function(){
-    showTime()
-  }
-  function showTime(){
-    var endtime = new Date('2016-10-01 20:00:00')
-    var nowtime = new Date()
-    var tempTime = parseInt((endtime.getTime() - nowtime.getTime())/1000)//转化成秒
-    var tday = parseInt(tempTime/(24*60*60))
-    var th = parseInt(tempTime/(60*60)%24)
-    var tm = parseInt(tempTime/60%60)
-    var ts = parseInt(tempTime%60)
-    document.getElementById('cleartime').textContent = tday+'天'+th+'小时'+tm+'分'+ts+'秒'
-    setTimeout(showTime,500)
-  }
-</script>
+  <h3 class="title">秒杀倒计时</h3>
+  <div class='time'>时间:2016年10月1日 20:20:20</div>
+  <div><span class='cleartime-left'>距离开始仅剩:</span><span id='cleartime'></span></div>
+  <script>
+    window.onload = function() {
+      showTime()
+    }
+
+    //
+    function showTime() {
+      var tempTime = returnDate('', '2016-10-01 20:20:20')
+      document.getElementById('cleartime').textContent = timestring(tempTime)
+      setTimeout(showTime, 500)
+    }
+
+    //返回两时间之间的秒数
+    function returnDate(starttime, endtime) {
+      var nowtime = new Date(starttime)
+      if (starttime == '') {
+        nowtime = new Date()
+      }
+      var endtime = new Date(endtime)
+      return parseInt((endtime.getTime() - nowtime.getTime()) / 1000) //转化成秒
+    }
+
+    //返回时间倒计时
+    function timestring(tempTime) {
+      var td = parseInt(tempTime / (24 * 60 * 60))
+      var th = parseInt(tempTime / (60 * 60) % 24)
+      var tm = parseInt(tempTime / 60 % 60)
+      var ts = parseInt(tempTime % 60)
+      return td + '天' + th + '小时' + tm + '分' + ts + '秒'
+    }
+  </script>
 </body>
+
 </html>
