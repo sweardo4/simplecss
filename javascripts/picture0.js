@@ -6,9 +6,7 @@
       event.preventDefault();
     }, false);
   }
-
   // 兼容性处理
-
   function getObjectURL(file) {
     var url = null;
     if (window.createObjectURL != undefined) { // basic
@@ -45,14 +43,13 @@
       "easing": "ease-in-out",
       "duration": 200
     });
+
     // 添加隐藏
     var winWith = window.document.body.offsetWidth,
       winHeight = window.document.body.offsetHeight,
       withArr = [],
       heightArr = [],
-      iconfHeight = 400; //预设图片高度所在位置
-
-
+      iconfHeight = 400; //预设图片高度所在范围
     setTimeout(function() {
       $('.picture').css('display', 'none')
       $('.img-group').find('li').each(function() {
@@ -114,13 +111,12 @@
   function ease(x) {
     return Math.sqrt(1 - Math.pow(x - 1, 2));
   }
-
+  
   delDrivemove();
   $('#picture').on('change', function(e) {
     var ua = navigator.userAgent.toLowerCase(),
       img = document.getElementById("img"),
       $this = $(this);
-
     var ext = $this[0].value.substring($this[0].value.lastIndexOf(".") + 1).toLowerCase();
     // gif在IE浏览器暂时无法显示
     if (ext != 'png' && ext != 'jpg' && ext != 'jpeg' && ext != '') {
@@ -138,9 +134,7 @@
 
     });
   })
-
   // 手势定义
-
   function touchAddHandle(el, topPx) {
     var initScale = 1;
     new AlloyFinger(el, {
@@ -182,31 +176,10 @@
           new To(el, "rotateZ", 270, 500, ease);
         }
       },
-
       pressMove: function(evt) {
         el.translateX += evt.deltaX;
         el.translateY += evt.deltaY;
       },
-      doubleTap: function(evt) {
-        $(el).closest('li').velocity({
-          padding: 0
-        }, {
-          "easing": "ease-in-out",
-          "duration": 200
-        });
-      },
-
-      tap: function(evt) {},
-      longTap: function(evt) {
-        $(el).velocity({
-          'padding': '0',
-        }, {
-          "easing": "ease-in-out",
-          "duration": 200
-        });
-      },
-      swipe: function(evt) {}
-
     });
 
   }

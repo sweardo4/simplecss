@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <title>maotop</title>
   <link rel="stylesheet" href="./stylesheets/screen.css" media="screen" title="no title" charset="utf-8">
+  <style media="screen">
+    h1{
+      background-color: #ff0;
+      width: 100px;
+    }
+  </style>
 </head>
 <body>
+  <h1>欢动</h1>
   <div class="container-full">
     <div class="top-sticky">
-
        <fieldset>
          <div class="left">天猫</div>
          <div class="search">
@@ -18,5 +24,17 @@
        </fieldset>
     </div>
   </div>
+
+  <script src="./lib/zepto.js" charset="utf-8"></script>
+  <script src="./lib/velocity.js"></script>
+
+  <script  charset="utf-8">
+
+  !function($){
+    $('h1').on('mouseover',function(){
+      $(this).velocity({width:200},1000)
+    })
+  }(Zepto,Velocity)
+  </script>
 </body>
 </html>

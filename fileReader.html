@@ -38,12 +38,12 @@
 		 var ua = navigator.userAgent.toLowerCase();
 		 EventUtil.addHandler(btn,'click',function(){
 			var file = document.getElementById("logo");
-			
+
 			var ext=file.value.substring(file.value.lastIndexOf(".")+1).toLowerCase();
-			
+
 			 // gif在IE浏览器暂时无法显示
 			 if(ext!='png'&&ext!='jpg'&&ext!='jpeg'){
-				 alert("图片的格式必须为png或者jpg或者jpeg格式！"); 
+				 alert("图片的格式必须为png或者jpg或者jpeg格式！");
 				 return;
 			 }
 			 if(/msie ([^;]+)/.test(ua)) {
@@ -69,12 +69,12 @@
 					  pic.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 				  }else if(lowIE10 >= 10) {
 					  html5Reader(file);
-				  } 
+				  }
 			 }else {
 				html5Reader(file);
 			 }
 		 });
-		 
+
 		 function html5Reader(file) {
 			 var fileObj = file.files[0],
 				img = document.getElementById("img");
@@ -84,14 +84,6 @@
 				  var data = getBase64Image(img);
 				  console.log(data);  // 打印出base64编码
 			  }
-			  /*
-			  var file = file.files[0];
-			  var reader = new FileReader();
-			  reader.readAsDataURL(file);
-			  reader.onload = function(e){
-				 var pic = document.getElementById("img");
-				 pic.src=this.result;
-			  }*/
 		 }
 	</script>
  </body>
